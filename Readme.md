@@ -1,4 +1,4 @@
-# Magic numbers
+# Magic numbers [![Build Status](https://travis-ci.com/diegosperes/b2challenge.svg?branch=master)](https://travis-ci.com/diegosperes/b2challenge)
 
 Devido a natureza do problema escolhi python 3 por ser a liguagem que possuo mais familiaridade podendo usufruir de benefícios builtins sem a necessidade de depêndencias externa ou alguma implementação de controle como o caso do memoize (functools.lru_cache). Foram utilizados alguns conceitos matemáticos explicados na docstring de cada escopo afim de otimizar o artefato gerado, em caso de alguma dúvida pode entrar em contato comigo :)
 
