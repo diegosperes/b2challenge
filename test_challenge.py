@@ -37,7 +37,7 @@ class MagicTestCase(TestCase):
         self.assertEqual({9, 25, 49}, magic.numbers)
 
     def test_get_magic_numbers_with_unique_values(self):
-        magic = Magic([(8, 27), (8, 27), (8, 27)])
+        magic = Magic([(8, 27), (7, 27), (9, 27)])
         self.assertEqual({9, 25}, magic.numbers)
 
     def test_get_amount_of_magic_numbers(self):
@@ -49,5 +49,5 @@ class MagicTestCase(TestCase):
         self.assertEqual(15, magic.amount)
 
     def test_get_amount_of_magic_numbers_with_unique_values(self):
-        magic = Magic([(-2300, 2300), (-2300, 2300), (-2300, 2300)])
+        magic = Magic([(-2299, 2300), (-2300, 2300), (-2301, 2300)])
         self.assertEqual(15, magic.amount)

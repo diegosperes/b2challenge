@@ -50,7 +50,7 @@ class Magic:
         return numbers
 
     def __init__(self, intervals):
-        self._intervals = intervals
+        self._intervals = set(intervals)
 
     def _is_magic(self, magic):
         number = math.sqrt(magic)
