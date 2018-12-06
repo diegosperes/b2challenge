@@ -9,4 +9,4 @@ Os teste foram dividídos em duas suit cases no mesmo arquivo, no entanto em um 
 
 ## O que pode ser melhorado
 
-No artefato gerado o loop considera um ou mais range afim de descobrir quais são os números mágicos que pertencem a esse intervalo, no entanto como podemos gerar todos os números primos maiores que 3 seria possível otimizar esse loop, também é possivel unificar intervalos como [(6, 70), (20, 85)] transformando em (6, 85) evitando interar em valores repetidos. Essas otimizações não foram feitas devido ao tempo de execução do código ser baixo ~0.3 segundos para verificar todos os números mágicos no range de 0 à 10^6 e levando em consideração que a complexidade do artefato gerado iria aumentar consideravelmente.
+No artefato gerado é possivel unificar intervalos como [(6, 70), (20, 85)] transformando em (6, 85) evitando interar em valores repetidos. Essa otimização não foi feita devido ao tempo de execução do código ser baixo ~0.2 segundos para verificar todos os números mágicos no range de 0 à 10 bilhões e levando em consideração que a complexidade do artefato gerado iria aumentar consideravelmente.

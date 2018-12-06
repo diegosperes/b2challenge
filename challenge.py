@@ -6,26 +6,19 @@ import functools
 def is_prime(number):
     """
     This function take advantage of memoize concept, save 100K key value in memory RAM (~ 5.2 MB).
-
-    A prime numbers can be generate by 6 * n - 1 or 6 * n + 1 math expression, whereas some result
-    aren't a prime number and number must be bigger than 3.
-    Sample:
-        6 * 4 - 1 = 23 (is a prime number)
-        6 * 4 + 1 = 25 (isn't a prime number)
-
     Also is possible to optimize the code using the concept of composite numbers and square root.
     http://mathandmultimedia.com/2012/06/02/determining-primes-through-square-root/
     """
-    first = (number - 1) / 6
-    second = (number + 1) / 6
-    is_prime = number > 1 and (first.is_integer() or second.is_integer())
-    if is_prime:
+    is_prime = True
+    if 1 >= number:
+        is_prime = False
+    else:
         end = int(math.sqrt(number) + 1)
         for i in range(2, end):
             if number % i == 0:
                 is_prime = False
                 break
-    return is_prime or number in {2, 3}
+    return is_prime
 
 
 class Magic:
@@ -46,14 +39,38 @@ class Magic:
         for begin, end in self._intervals:
             end += 1
             begin = 0 if begin < 0 else begin
-            numbers.update({number for number in range(begin, end) if self._is_magic(number)})
+            for magic in self._get_next_number(begin, end):
+                if end >= magic >= begin:
+                    numbers.add(magic)
         return numbers
 
     def __init__(self, intervals):
         self._intervals = set(intervals)
 
-    def _is_magic(self, magic):
-        number = math.sqrt(magic)
-        if number.is_integer():
-            return is_prime(number)
-        return False
+    def _get_next_number(self, begin, end):
+        """
+        Return a magic number.
+
+        A prime numbers can be generate by 6 * n - 1 or 6 * n + 1 math expression, whereas some result
+        aren't a prime number and number must be bigger than 3.
+        Sample:
+            6 * 4 - 1 = 23 (is a prime number)
+            6 * 4 + 1 = 25 (isn't a prime number)
+        """
+        step = int(math.sqrt(begin))
+        step = int((step - 1) / 6)
+        step = 0 if step < 0 else step
+
+        if step == 0:
+            step = 1
+            for integer in [2, 3]:
+                if end >= integer:
+                    yield integer ** 2
+
+        number = 0
+        while end > number:
+            for integer in [6 * step - 1, 6 * step + 1]:
+                if is_prime(integer):
+                    number = integer ** 2
+                    yield number
+            step += 1
