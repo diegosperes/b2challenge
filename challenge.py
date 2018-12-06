@@ -57,10 +57,7 @@ class Magic:
             6 * 4 - 1 = 23 (is a prime number)
             6 * 4 + 1 = 25 (isn't a prime number)
         """
-        step = int(math.sqrt(begin))
-        step = int((step - 1) / 6)
-        step = 0 if step < 0 else step
-
+        step = self._get_step(begin)
         if step == 0:
             step = 1
             for integer in [2, 3]:
@@ -74,3 +71,8 @@ class Magic:
                     number = integer ** 2
                     yield number
             step += 1
+
+    def _get_step(self, begin):
+        step = int(math.sqrt(begin))
+        step = int((step - 1) / 6)
+        return 0 if step < 0 else step
