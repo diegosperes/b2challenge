@@ -42,6 +42,7 @@ class Magic:
         return len(self.numbers)
 
     @property
+    @functools.lru_cache(maxsize=1)
     def numbers(self):
         numbers = []
         for begin, end in self._intervals:
