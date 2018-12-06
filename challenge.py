@@ -16,18 +16,16 @@ def is_prime(number):
     Also is possible to optimize the code using the concept of composite numbers and square root.
     http://mathandmultimedia.com/2012/06/02/determining-primes-through-square-root/
     """
-    is_prime = True
     first = (number - 1) / 6
     second = (number + 1) / 6
-    if first.is_integer() or second.is_integer():
+    is_prime = number > 1 and (first.is_integer() or second.is_integer())
+    if is_prime:
         end = int(math.sqrt(number) + 1)
         for i in range(2, end):
             if number % i == 0:
                 is_prime = False
                 break
-    else:
-        is_prime = False
-    return is_prime or number in {1, 2, 3}
+    return is_prime or number in {2, 3}
 
 
 class Magic:

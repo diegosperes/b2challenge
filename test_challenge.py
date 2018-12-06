@@ -5,8 +5,11 @@ from challenge import Magic, is_prime
 
 class PrimeNumberTestCase(TestCase):
 
+    def test_validate_number_zero(self):
+        self.assertFalse(is_prime(0))
+
     def test_validate_number_one(self):
-        self.assertTrue(is_prime(1))
+        self.assertFalse(is_prime(1))
 
     def test_validate_number_two(self):
         self.assertTrue(is_prime(2))
@@ -28,7 +31,7 @@ class PrimeNumberTestCase(TestCase):
 class MagicTestCase(TestCase):
     def test_get_magic_numbers(self):
         magic = Magic([(0, 50)])
-        self.assertEqual([1, 4, 9, 25, 49], magic.numbers)
+        self.assertEqual([4, 9, 25, 49], magic.numbers)
 
     def test_get_magic_numbers_with_more_than_one_interval(self):
         magic = Magic([(8, 27), (49, 49)])
@@ -36,8 +39,8 @@ class MagicTestCase(TestCase):
 
     def test_get_amount_of_magic_numbers(self):
         magic = Magic([(-2300, 2300)])
-        self.assertEqual(16, magic.amount)
+        self.assertEqual(15, magic.amount)
 
     def test_get_amount_of_magic_numbers_with_more_than_one_interval(self):
         magic = Magic([(-2300, 0), (0, 2300)])
-        self.assertEqual(16, magic.amount)
+        self.assertEqual(15, magic.amount)
