@@ -4,7 +4,6 @@ from challenge import Magic, is_prime
 
 
 class PrimeNumberTestCase(TestCase):
-
     def test_validate_number_zero(self):
         self.assertFalse(is_prime(0))
 
