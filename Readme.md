@@ -7,6 +7,11 @@ Devido a natureza do problema escolhi python 3 por ser a liguagem que possuo mai
 Criei um makefile para facilitar a execução dos testes: ```make tests```
 Os teste foram dividídos em duas suit cases no mesmo arquivo, no entanto em um projetos mais complexo seria legar separar elas por arquivos.
 
+## Benchmark
+
+Para realizar o benchmark basta executar o seguinte comando: ```make benchmark```
+Elaborei um benchmark para garantir que o tempo de execução do artefato possa ser medido, foi possível processar em ~0.2 segundos um intervalo de 0 à 10 bilhões, confira o tempo no build do Travis CI.
+
 ## O que pode ser melhorado
 
-No artefato gerado é possivel unificar intervalos como [(6, 70), (20, 85)] transformando em (6, 85) evitando interar em valores repetidos. Essa otimização não foi feita devido ao tempo de execução do código ser baixo ~0.2 segundos para verificar todos os números mágicos no range de 0 à 10 bilhões e levando em consideração que a complexidade do artefato gerado iria aumentar consideravelmente.
+No artefato gerado é possivel unificar intervalos como [(6, 70), (20, 85)] transformando em (6, 85) evitando interar em valores repetidos. Essa otimização não foi feita devido ao tempo de execução do código ser baixo e levando em consideração que a complexidade do artefato gerado iria aumentar consideravelmente.
