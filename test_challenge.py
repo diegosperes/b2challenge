@@ -31,11 +31,15 @@ class PrimeNumberTestCase(TestCase):
 class MagicTestCase(TestCase):
     def test_get_magic_numbers(self):
         magic = Magic([(0, 50)])
-        self.assertEqual([4, 9, 25, 49], magic.numbers)
+        self.assertEqual({4, 9, 25, 49}, magic.numbers)
 
     def test_get_magic_numbers_with_more_than_one_interval(self):
         magic = Magic([(8, 27), (49, 49)])
-        self.assertEqual([9, 25, 49], magic.numbers)
+        self.assertEqual({9, 25, 49}, magic.numbers)
+
+    def test_get_magic_numbers_with_unique_values(self):
+        magic = Magic([(8, 27), (8, 27), (8, 27)])
+        self.assertEqual({9, 25}, magic.numbers)
 
     def test_get_amount_of_magic_numbers(self):
         magic = Magic([(-2300, 2300)])
@@ -43,4 +47,8 @@ class MagicTestCase(TestCase):
 
     def test_get_amount_of_magic_numbers_with_more_than_one_interval(self):
         magic = Magic([(-2300, 0), (0, 2300)])
+        self.assertEqual(15, magic.amount)
+
+    def test_get_amount_of_magic_numbers_with_unique_values(self):
+        magic = Magic([(-2300, 2300), (-2300, 2300), (-2300, 2300)])
         self.assertEqual(15, magic.amount)

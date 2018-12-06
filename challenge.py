@@ -42,11 +42,11 @@ class Magic:
     @property
     @functools.lru_cache(maxsize=1)
     def numbers(self):
-        numbers = []
+        numbers = set()
         for begin, end in self._intervals:
             end += 1
             begin = 0 if begin < 0 else begin
-            numbers += [number for number in range(begin, end) if self._is_magic(number)]
+            numbers.update({number for number in range(begin, end) if self._is_magic(number)})
         return numbers
 
     def __init__(self, intervals):
